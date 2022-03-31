@@ -1,0 +1,17 @@
+.body {
+  height: 600px;
+
+  img {
+    max-width: 100%;
+  }
+
+  div {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .ratio-1x1 {
+    width: 25px;
+    height: 25px;
+  }
+}
