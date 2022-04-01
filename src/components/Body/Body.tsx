@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React from 'react';
 import ImageHotspots from 'react-image-hotspots';
 
@@ -5,40 +6,30 @@ import body from '../../assets/body.png';
 import './Body.scss';
 
 interface BodyProps {
-  setActiveTable: React.Dispatch<React.SetStateAction<string | null>>;
+  activePart?: string | null;
+  parts: { x: number; y: number; text: string }[];
+  setActivePart: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-function Body({ setActiveTable }: BodyProps) {
+function Body({ activePart, setActivePart, parts }: BodyProps) {
   const generateTooltip = (text: string) => {
     return (
       <div className="ratio ratio-1x1">
         <button
-          className="btn btn-primary rounded-circle"
-          onClick={() => setActiveTable(text)}
+          className={clsx({
+            btn: true,
+            'btn-danger': activePart === text,
+            'btn-primary': activePart !== text,
+            'rounded-circle': true
+          })}
+          onClick={() => setActivePart(text)}
+          onMouseEnter={() => setActivePart(text)}
         >
           <span className="visually-hidden">{text}</span>
         </button>
       </div>
     );
   };
-
-  const tooltips = [
-    {
-      x: 45,
-      y: 5,
-      text: 'head'
-    },
-    {
-      x: 72,
-      y: 35,
-      text: 'arm'
-    },
-    {
-      x: 30,
-      y: 70,
-      text: 'leg'
-    }
-  ];
 
   return (
     <div className="body">
@@ -49,8 +40,8 @@ function Body({ setActiveTable }: BodyProps) {
         src={body}
         background="transparent"
         alt="Sample image"
-        hotspots={tooltips.map(tooltip => {
-          const { x, y, text } = tooltip;
+        hotspots={parts.map(part => {
+          const { x, y, text } = part;
           return { x, y, content: generateTooltip(text) };
         })}
       />
