@@ -80,8 +80,7 @@ export default function mapIntelexOutput(intelexData: IntelexProps[]) {
         ...mapped,
         text
       });
-    })
-    .filter(Boolean);
+    });
 
   return {
     parts,
