@@ -24,7 +24,7 @@ function Table({ tableData, activePart }: TableProps) {
         <thead>
           <tr>
             <th scope="col">Month</th>
-            <th scope="col">Year To Date</th>
+            <th scope="col">Count</th>
           </tr>
         </thead>
         <tbody>
@@ -33,7 +33,7 @@ function Table({ tableData, activePart }: TableProps) {
               const current = ordered[key];
 
               return (
-                <tr>
+                <tr key={key}>
                   <td>{key}</td>
                   <td>{current.count}</td>
                 </tr>
