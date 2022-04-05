@@ -1,6 +1,6 @@
+import ImageHotspots from '@jacobsdigitalfactory/react-image-hotspots';
 import clsx from 'clsx';
 import React from 'react';
-import ImageHotspots from 'react-image-hotspots';
 
 import body from '../../assets/body.png';
 import './Body.scss';

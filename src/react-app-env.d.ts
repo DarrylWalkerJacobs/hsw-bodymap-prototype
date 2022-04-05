@@ -1,3 +1,3 @@
 /// <reference types="react-scripts" />
 
-declare module 'react-image-hotspots';
+declare module '@jacobsdigitalfactory/react-image-hotspots';
